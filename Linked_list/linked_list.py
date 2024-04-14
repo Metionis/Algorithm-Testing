@@ -39,6 +39,53 @@ class Linked_list:
         for data in data_list:
             self.insert_at_end(data)
 
+    def get_length (self):
+        count = 0
+        itr = self.head
+        while itr:
+            count += 1
+            itr = itr.next
+
+        return count
+    
+    def remove_at (self, index):
+        if index < 0 or index >= self.get_length():
+            raise Exception("Invalid Value of index")
+
+        if index == 0:
+            self.head = self.head.next
+            return
+        
+        count = 0
+        itr = self.head
+        while itr:
+            if count == index - 1:
+                itr.next = itr.next.next
+                break
+
+            count += 1
+            itr = itr.next
+
+
+    def insert_at(self, index, data):
+        if index < 0 or index > self.get_length():
+            raise Exception("Invalid Value of index")
+        if index == 0:
+            self.insert_at_beginning(data)
+            return
+        
+        count = 0
+        itr = self.head
+        while itr:
+            if count == index - 1:
+                node = Node(data, itr.next)
+                itr.next = node
+                return
+
+            count += 1
+            itr = itr.next
+
+        
 if __name__ == '__main__':
     li = Linked_list()
     li.insert_at_beginning(1)
@@ -53,4 +100,10 @@ if __name__ == '__main__':
     data_list = ['Orange', 'water', 'cocaca', 'banana']
     li2.insert_value(data_list)
     li2.print_list()
-    
+    print("li2 length: ", li2.get_length())
+    li2.remove_at(2)
+    print("li2 after remove node")
+    li2.print_list()
+    print("li2 after insert new value to a specific index")
+    li2.insert_at(1, "cheese")
+    li2.print_list()
