@@ -104,6 +104,6 @@ if __name__ == '__main__':
     li2.remove_at(2)
     print("li2 after remove node")
     li2.print_list()
-    print("li2 after insert new value to a specific index")
+    print("li2 after insert new value to a specific Aindex")
     li2.insert_at(1, "cheese")
     li2.print_list()
